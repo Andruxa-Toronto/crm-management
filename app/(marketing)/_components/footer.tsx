@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
+import mongodb from "@/lib/mongodb";
 
 import Logo from "./logo";
 
-const Footer = () => {
+const Footer = async () => {
+
+  const userName = await mongodb() || "Name";
+
   return (
   <div className="flex items-center w-full p-6 bg-background dark:bg-[#1f1f1f]">
     <Logo />
@@ -13,6 +17,10 @@ const Footer = () => {
         <Button variant="ghost" size="sm">
             Terms and Conditions
         </Button>
+        <div>
+        {userName}
+        </div>
+        
     </div>
   </div>
   );
